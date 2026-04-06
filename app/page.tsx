@@ -48,11 +48,11 @@ export default async function Home() {
             </>
           ) : (
             <>
-              <Link href="/login">
-                <Button variant="ghost" className="text-zinc-300 hover:text-white mr-2">Login</Button>
+              <Link href="/login" className="cursor-pointer">
+                <Button variant="ghost" className="mr-2 cursor-pointer">Login</Button>
               </Link>
-              <Link href="/login">
-                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white">
+              <Link href="/login" className="cursor-pointer">
+                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer">
                   Get Started
                 </Button>
               </Link>
@@ -62,7 +62,7 @@ export default async function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="container mx-auto px-6 pt-32 pb-24 text-center max-w-4xl flex flex-col items-center">
+      <main className="container mx-auto px-6 pt-20 pb-24 text-center max-w-4xl flex flex-col items-center">
         <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium tracking-wide shadow-sm animate-fade-in">
           Introducing the AI Insights Engine
         </div>
