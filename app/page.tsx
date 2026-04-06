@@ -17,7 +17,7 @@ export default async function Home() {
           <div className="bg-indigo-600 p-2 rounded-lg">
             <BarChart3 className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold tracking-tight">CSV Insights</span>
+          <span className="text-xl font-bold tracking-tight">cASI</span>
         </div>
         <nav className="flex items-center gap-2 sm:gap-4">
           {user ? (
