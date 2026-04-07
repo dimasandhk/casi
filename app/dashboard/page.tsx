@@ -4,7 +4,7 @@ import { useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { CsvUploader, UploadedCSVData } from "@/components/csv-uploader"
-import { ColumnMapper } from "@/components/column-mapper"
+import { ColumnMapper, MappingConfig } from "@/components/column-mapper"
 import { BarChart3, LogOut, LayoutDashboard } from "lucide-react"
 
 export default function DashboardPage() {
@@ -13,11 +13,7 @@ export default function DashboardPage() {
   const [csvData, setCsvData] = useState<UploadedCSVData | null>(null)
   
   // Later in Day 3, this state goes into the AI processing step
-  const [mappingConfig, setMappingConfig] = useState<{
-    feedbackColumn: string
-    dateColumn?: string
-    ratingColumn?: string
-  } | null>(null)
+  const [mappingConfig, setMappingConfig] = useState<MappingConfig | null>(null)
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -28,7 +24,7 @@ export default function DashboardPage() {
     setCsvData(data)
   }
 
-  const handleMappingComplete = (config: any) => {
+  const handleMappingComplete = (config: MappingConfig) => {
     setMappingConfig(config)
     // Day 3 begins here: chunking and sending to AI
     alert("Mapping successful! " + JSON.stringify(config) + "\\n(Day 3 Chunking starts here)")
