@@ -9,9 +9,15 @@ import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Sparkles } from "lucide-react"
 
+export interface MappingConfig {
+  feedbackColumn: string
+  dateColumn?: string
+  ratingColumn?: string
+}
+
 interface ColumnMapperProps {
   data: UploadedCSVData
-  onMappingComplete: (mappedConfig: { feedbackColumn: string, dateColumn?: string, ratingColumn?: string }) => void
+  onMappingComplete: (mappedConfig: MappingConfig) => void
 }
 
 export function ColumnMapper({ data, onMappingComplete }: ColumnMapperProps) {
