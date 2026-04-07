@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { UploadedCSVData } from "./csv-uploader"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -26,10 +26,10 @@ export function ColumnMapper({ data, onMappingComplete }: ColumnMapperProps) {
   const [ratingColumn, setRatingColumn] = useState<string>("none")
 
   // Preview the first 3 rows of the selected feedback column
-  const getPreviewRows = (col: string) => {
-    if (!col) return []
-    return data.rows.slice(0, 3).map((row) => row[col])
-  }
+  const previewRows = useMemo(() => {
+    if (!feedbackColumn) return []
+    return data.rows.slice(0, 3).map((row) => row[feedbackColumn])
+  }, [data.rows, feedbackColumn])
 
   const handleStartAnalysis = () => {
     if (!feedbackColumn) return
@@ -130,7 +130,7 @@ export function ColumnMapper({ data, onMappingComplete }: ColumnMapperProps) {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {getPreviewRows(feedbackColumn).map((val, idx) => (
+                    {previewRows.map((val, idx) => (
                       <TableRow key={idx} className="border-b border-zinc-800/50 hover:bg-zinc-900/30">
                         <TableCell className="text-zinc-500 text-xs font-mono">{idx + 1}</TableCell>
                         <TableCell className="text-zinc-300 text-sm font-medium">
