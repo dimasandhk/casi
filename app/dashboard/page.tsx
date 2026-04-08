@@ -64,7 +64,7 @@ export default function DashboardPage() {
         <div className="mb-10 text-center animate-fade-in">
           <h1 className="text-3xl font-bold tracking-tight mb-2">New Analysis Project</h1>
           <p className="text-zinc-400 max-w-xl mx-auto">
-            Upload a CSV containing user feedback, app reviews, or support tickets. We'll utilize AI to categorize everything and identify top trends.
+            Upload a CSV containing user feedback, app reviews, or support tickets. We&apos;ll utilize AI to categorize everything and identify top trends.
           </p>
         </div>
 

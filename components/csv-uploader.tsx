@@ -3,10 +3,11 @@
 import { useCallback, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import Papa from "papaparse"
-import { UploadCloud, FileWarning, CheckCircle2 } from "lucide-react"
+import { UploadCloud, FileWarning } from "lucide-react"
 
 export interface UploadedCSVData {
   headers: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   rows: Record<string, any>[]
   fileName: string
 }
@@ -38,6 +39,7 @@ export function CsvUploader({ onUploadSuccess }: CsvUploaderProps) {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       complete: (results: Papa.ParseResult<any>) => {
         setIsProcessing(false)
         
@@ -46,6 +48,7 @@ export function CsvUploader({ onUploadSuccess }: CsvUploaderProps) {
           return
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const data = results.data as Record<string, any>[]
         
         if (data.length > 1000) {
@@ -66,6 +69,7 @@ export function CsvUploader({ onUploadSuccess }: CsvUploaderProps) {
           fileName: file.name
         })
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       error: (err: any) => {
         setIsProcessing(false)
         setError(`Failed to read file: ${err.message}`)
@@ -85,10 +89,11 @@ export function CsvUploader({ onUploadSuccess }: CsvUploaderProps) {
     <div className="w-full max-w-2xl mx-auto mt-8">
       <div 
         {...getRootProps()} 
-        className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ease-out
+        className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950
           ${isDragActive ? "border-indigo-500 bg-indigo-500/10 scale-[1.02]" : "border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 hover:bg-zinc-800/80"}
           ${error || isDragReject ? "border-red-500/50 bg-red-500/5" : ""}
         `}
+        aria-label="Upload CSV file"
       >
         <input {...getInputProps()} />
         <div className="flex flex-col items-center justify-center space-y-4">
