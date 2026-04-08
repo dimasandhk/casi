@@ -24,6 +24,7 @@ export default async function Home() {
             <>
               <div className="flex items-center gap-3">
                 {user.user_metadata?.avatar_url ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img src={user.user_metadata.avatar_url} alt="Avatar" className="w-8 h-8 rounded-full border border-zinc-700" />
                 ) : (
                   <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-sm font-bold text-white">

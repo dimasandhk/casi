@@ -149,7 +149,7 @@ export function ColumnMapper({ data, onMappingComplete }: ColumnMapperProps) {
       </CardContent>
       <CardFooter className="bg-zinc-900/50 border-t border-zinc-800/80 pt-6 mt-4 rounded-b-xl flex justify-between items-center">
         <p className="text-sm text-zinc-500">
-          We'll securely process your data without altering the original file.
+          We&apos;ll securely process your data without altering the original file.
         </p>
         <Button 
           onClick={handleStartAnalysis} 
